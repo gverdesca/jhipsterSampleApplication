@@ -1,0 +1,54 @@
+
+<div *ngIf="ind01Indic">
+    <h2><span>Ind 01 Indic</span> {{ind01Indic.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Dl Des</span></dt>
+        <dd>
+            <span>{{ind01Indic.dlDes}}</span>
+        </dd>
+        <dt><span>Lt Note</span></dt>
+        <dd>
+            <span>{{ind01Indic.ltNote}}</span>
+        </dd>
+        <dt><span>Dl Path Owl</span></dt>
+        <dd>
+            <span>{{ind01Indic.dlPathOwl}}</span>
+        </dd>
+        <dt><span>Dl Iri</span></dt>
+        <dd>
+            <span>{{ind01Indic.dlIri}}</span>
+        </dd>
+        <dt><span>Db Cod</span></dt>
+        <dd>
+            <span>{{ind01Indic.dbCod}}</span>
+        </dd>
+        <dt><span>Ind 02 Std</span></dt>
+        <dd>
+            <div *ngIf="ind01Indic.ind02Std">
+                <a [routerLink]="['/ind-02-std', ind01Indic.ind02Std?.id]">{{ind01Indic.ind02Std?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Ind 04 Classif</span></dt>
+        <dd>
+            <div *ngIf="ind01Indic.ind04classif">
+                <a [routerLink]="['/ind-04-classif', ind01Indic.ind04classif?.id]">{{ind01Indic.ind04classif?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ind-01-indic/'+ ind01Indic.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

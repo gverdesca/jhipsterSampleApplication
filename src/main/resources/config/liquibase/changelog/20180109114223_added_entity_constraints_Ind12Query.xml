@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ind12Query.
+    -->
+    <changeSet id="20180109114223-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="datasource_id"
+                                 baseTableName="ind_12_query"
+                                 constraintName="fk_ind12query_datasource_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="datasource"/>
+
+        <addForeignKeyConstraint baseColumnNames="datasource_id"
+                                 baseTableName="ind_12_query"
+                                 constraintName="fk_ind12query_datasource_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="datasource"/>
+
+    </changeSet>
+</databaseChangeLog>
