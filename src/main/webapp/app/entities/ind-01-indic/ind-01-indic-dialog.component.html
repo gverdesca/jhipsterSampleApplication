@@ -1,0 +1,110 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myInd01IndicLabel">Create or edit a Ind 01 Indic</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ind01Indic.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ind01Indic.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlDes">Dl Des</label>
+            <input type="text" class="form-control" name="dlDes" id="field_dlDes"
+                [(ngModel)]="ind01Indic.dlDes" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlDes?.dirty && editForm.controls.dlDes?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlDes?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ltNote">Lt Note</label>
+            <input type="text" class="form-control" name="ltNote" id="field_ltNote"
+                [(ngModel)]="ind01Indic.ltNote" required maxlength="500"/>
+            <div [hidden]="!(editForm.controls.ltNote?.dirty && editForm.controls.ltNote?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ltNote?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ltNote?.errors?.maxlength">
+                   This field cannot be longer than 500 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlPathOwl">Dl Path Owl</label>
+            <input type="text" class="form-control" name="dlPathOwl" id="field_dlPathOwl"
+                [(ngModel)]="ind01Indic.dlPathOwl" required maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlPathOwl?.dirty && editForm.controls.dlPathOwl?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlPathOwl?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlPathOwl?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlIri">Dl Iri</label>
+            <input type="text" class="form-control" name="dlIri" id="field_dlIri"
+                [(ngModel)]="ind01Indic.dlIri" required maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlIri?.dirty && editForm.controls.dlIri?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlIri?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlIri?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dbCod">Db Cod</label>
+            <input type="text" class="form-control" name="dbCod" id="field_dbCod"
+                [(ngModel)]="ind01Indic.dbCod" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.dbCod?.dirty && editForm.controls.dbCod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dbCod?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dbCod?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_ind02Std">Ind 02 Std</label>
+            <select class="form-control" id="field_ind02Std" name="ind02Std" [(ngModel)]="ind01Indic.ind02Std" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind02StdOption.id === ind01Indic.ind02Std?.id ? ind01Indic.ind02Std : ind02StdOption" *ngFor="let ind02StdOption of ind02stds; trackBy: trackInd02StdById">{{ind02StdOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ind04classif">Ind 04 Classif</label>
+            <select class="form-control" id="field_ind04classif" name="ind04classif" [(ngModel)]="ind01Indic.ind04classif" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind04ClassifOption.id === ind01Indic.ind04classif?.id ? ind01Indic.ind04classif : ind04ClassifOption" *ngFor="let ind04ClassifOption of ind04classifs; trackBy: trackInd04ClassifById">{{ind04ClassifOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

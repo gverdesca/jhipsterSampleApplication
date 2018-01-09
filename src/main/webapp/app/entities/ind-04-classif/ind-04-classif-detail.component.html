@@ -1,0 +1,30 @@
+
+<div *ngIf="ind04Classif">
+    <h2><span>Ind 04 Classif</span> {{ind04Classif.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Dl Des</span></dt>
+        <dd>
+            <span>{{ind04Classif.dlDes}}</span>
+        </dd>
+        <dt><span>Db Cod</span></dt>
+        <dd>
+            <span>{{ind04Classif.dbCod}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ind-04-classif/'+ ind04Classif.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

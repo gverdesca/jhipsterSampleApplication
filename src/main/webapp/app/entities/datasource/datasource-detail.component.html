@@ -1,0 +1,54 @@
+
+<div *ngIf="datasource">
+    <h2><span>Datasource</span> {{datasource.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Db Tipo</span></dt>
+        <dd>
+            <span>{{datasource.dbTipo}}</span>
+        </dd>
+        <dt><span>Cd Cod</span></dt>
+        <dd>
+            <span>{{datasource.cdCod}}</span>
+        </dd>
+        <dt><span>Ts Creaz</span></dt>
+        <dd>
+            <span>{{datasource.tsCreaz | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Ts Modif</span></dt>
+        <dd>
+            <span>{{datasource.tsModif | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Dl Path Img</span></dt>
+        <dd>
+            <span>{{datasource.dlPathImg}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            <div *ngIf="datasource.user">
+                <a [routerLink]="['/ba-01-utente', datasource.user?.id]">{{datasource.user?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>User Update</span></dt>
+        <dd>
+            <div *ngIf="datasource.userUpdate">
+                <a [routerLink]="['/ba-01-utente', datasource.userUpdate?.id]">{{datasource.userUpdate?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'datasource/'+ datasource.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

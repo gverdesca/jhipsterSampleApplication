@@ -1,0 +1,103 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBa10MenuLabel">Create or edit a Ba 10 Menu</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ba10Menu.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ba10Menu.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nmNome">Nm Nome</label>
+            <input type="text" class="form-control" name="nmNome" id="field_nmNome"
+                [(ngModel)]="ba10Menu.nmNome" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.nmNome?.dirty && editForm.controls.nmNome?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmNome?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cdCod">Cd Cod</label>
+            <input type="text" class="form-control" name="cdCod" id="field_cdCod"
+                [(ngModel)]="ba10Menu.cdCod" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.cdCod?.dirty && editForm.controls.cdCod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cdCod?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cdCod?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dbOrdine">Db Ordine</label>
+            <input type="text" class="form-control" name="dbOrdine" id="field_dbOrdine"
+                [(ngModel)]="ba10Menu.dbOrdine" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.dbOrdine?.dirty && editForm.controls.dbOrdine?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dbOrdine?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlPath">Dl Path</label>
+            <input type="text" class="form-control" name="dlPath" id="field_dlPath"
+                [(ngModel)]="ba10Menu.dlPath" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlPath?.dirty && editForm.controls.dlPath?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlPath?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlIcon">Dl Icon</label>
+            <input type="text" class="form-control" name="dlIcon" id="field_dlIcon"
+                [(ngModel)]="ba10Menu.dlIcon" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlIcon?.dirty && editForm.controls.dlIcon?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlIcon?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_blLink">Bl Link</label>
+            <input type="checkbox" class="form-control" name="blLink" id="field_blLink"
+                [(ngModel)]="ba10Menu.blLink" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_ba10Menu">Ba 10 Menu</label>
+            <select class="form-control" id="field_ba10Menu" name="ba10Menu" [(ngModel)]="ba10Menu.ba10Menu" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ba10MenuOption.id === ba10Menu.ba10Menu?.id ? ba10Menu.ba10Menu : ba10MenuOption" *ngFor="let ba10MenuOption of ba10menus; trackBy: trackBa10MenuById">{{ba10MenuOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_menuParent">Menu Parent</label>
+            <select class="form-control" id="field_menuParent" name="menuParent" [(ngModel)]="ba10Menu.menuParent" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ba10MenuOption.id === ba10Menu.menuParent?.id ? ba10Menu.menuParent : ba10MenuOption" *ngFor="let ba10MenuOption of ba10menus; trackBy: trackBa10MenuById">{{ba10MenuOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

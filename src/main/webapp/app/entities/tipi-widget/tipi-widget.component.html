@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Tipi Widgets</span>
+        <button class="btn btn-primary float-right jh-create-entity create-tipi-widget" [routerLink]="['/', { outlets: { popup: ['tipi-widget-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Tipi Widget
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tipiWidgets">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Db Tipo</span></th>
+            <th><span>Db Tipo Cont</span></th>
+            <th><span>Fl Drill</span></th>
+            <th><span>Widget Impl</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tipiWidget of tipiWidgets ;trackBy: trackId">
+                <td><a [routerLink]="['../tipi-widget', tipiWidget.id ]">{{tipiWidget.id}}</a></td>
+                <td>{{tipiWidget.dbTipo}}</td>
+                <td>{{tipiWidget.dbTipoCont}}</td>
+                <td>{{tipiWidget.flDrill}}</td>
+                <td>
+                    <div *ngIf="tipiWidget.widgetImpl">
+                        <a [routerLink]="['../widget-impl', tipiWidget.widgetImpl?.id ]" >{{tipiWidget.widgetImpl?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../tipi-widget', tipiWidget.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipi-widget/'+ tipiWidget.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipi-widget/'+ tipiWidget.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
