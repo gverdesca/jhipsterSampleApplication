@@ -1,0 +1,64 @@
+
+<div *ngIf="ba12Widget">
+    <h2><span>Ba 12 Widget</span> {{ba12Widget.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>De Options</span></dt>
+        <dd>
+            <span>{{ba12Widget.deOptions}}</span>
+        </dd>
+        <dt><span>Db Titolo</span></dt>
+        <dd>
+            <span>{{ba12Widget.dbTitolo}}</span>
+        </dd>
+        <dt><span>De Content</span></dt>
+        <dd>
+            <span>{{ba12Widget.deContent}}</span>
+        </dd>
+        <dt><span>Ba 11 Dsh</span></dt>
+        <dd>
+            <div *ngIf="ba12Widget.ba11Dsh">
+                <a [routerLink]="['/ba-11-dsh', ba12Widget.ba11Dsh?.id]">{{ba12Widget.ba11Dsh?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Dashboard</span></dt>
+        <dd>
+            <div *ngIf="ba12Widget.dashboard">
+                <a [routerLink]="['/ba-11-dsh', ba12Widget.dashboard?.id]">{{ba12Widget.dashboard?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Query</span></dt>
+        <dd>
+            <div *ngIf="ba12Widget.query">
+                <a [routerLink]="['/ind-12-query', ba12Widget.query?.id]">{{ba12Widget.query?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Widget Type</span></dt>
+        <dd>
+            <div *ngIf="ba12Widget.widgetType">
+                <a [routerLink]="['/tipi-widget', ba12Widget.widgetType?.id]">{{ba12Widget.widgetType?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Ind 12 Query</span></dt>
+        <dd>
+            <div *ngIf="ba12Widget.ind12Query">
+                <a [routerLink]="['/ind-12-query', ba12Widget.ind12Query?.id]">{{ba12Widget.ind12Query?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ba-12-widget/'+ ba12Widget.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

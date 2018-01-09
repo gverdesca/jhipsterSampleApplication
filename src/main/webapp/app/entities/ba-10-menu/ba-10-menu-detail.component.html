@@ -1,0 +1,58 @@
+
+<div *ngIf="ba10Menu">
+    <h2><span>Ba 10 Menu</span> {{ba10Menu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nm Nome</span></dt>
+        <dd>
+            <span>{{ba10Menu.nmNome}}</span>
+        </dd>
+        <dt><span>Cd Cod</span></dt>
+        <dd>
+            <span>{{ba10Menu.cdCod}}</span>
+        </dd>
+        <dt><span>Db Ordine</span></dt>
+        <dd>
+            <span>{{ba10Menu.dbOrdine}}</span>
+        </dd>
+        <dt><span>Dl Path</span></dt>
+        <dd>
+            <span>{{ba10Menu.dlPath}}</span>
+        </dd>
+        <dt><span>Dl Icon</span></dt>
+        <dd>
+            <span>{{ba10Menu.dlIcon}}</span>
+        </dd>
+        <dt><span>Bl Link</span></dt>
+        <dd>
+            <span>{{ba10Menu.blLink}}</span>
+        </dd>
+        <dt><span>Ba 10 Menu</span></dt>
+        <dd>
+            <div *ngIf="ba10Menu.ba10Menu">
+                <a [routerLink]="['/ba-10-menu', ba10Menu.ba10Menu?.id]">{{ba10Menu.ba10Menu?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Menu Parent</span></dt>
+        <dd>
+            <div *ngIf="ba10Menu.menuParent">
+                <a [routerLink]="['/ba-10-menu', ba10Menu.menuParent?.id]">{{ba10Menu.menuParent?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ba-10-menu/'+ ba10Menu.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

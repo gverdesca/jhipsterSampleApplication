@@ -1,0 +1,66 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "ind01Indic",
+            "otherEntityName": "ind01Indic",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "ind12Query",
+            "otherEntityName": "ind12Query",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "obi00obiettivo",
+            "otherEntityName": "obiettivi",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "obi02IndicValus",
+            "otherEntityName": "indicValu",
+            "otherEntityRelationshipName": "obi01ObiettiviIndic"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "obi03IndicValuInters",
+            "otherEntityName": "indicValInt",
+            "otherEntityRelationshipName": "obi01ObiettiviIndic"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dtIni",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dtFine",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tiSegno",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
+        }
+    ],
+    "changelogDate": "20180109135425",
+    "entityTableName": "obiettivi_ind",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

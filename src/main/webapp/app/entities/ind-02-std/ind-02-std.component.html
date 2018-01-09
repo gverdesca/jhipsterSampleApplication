@@ -1,0 +1,62 @@
+<div>
+    <h2>
+        <span>Ind 02 Stds</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ind-02-std" [routerLink]="['/', { outlets: { popup: ['ind-02-std-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Ind 02 Std
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ind02Stds">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Dl Des</span></th>
+            <th><span>Dl Url</span></th>
+            <th><span>Db Cod</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ind02Std of ind02Stds ;trackBy: trackId">
+                <td><a [routerLink]="['../ind-02-std', ind02Std.id ]">{{ind02Std.id}}</a></td>
+                <td>{{ind02Std.dlDes}}</td>
+                <td>{{ind02Std.dlUrl}}</td>
+                <td>{{ind02Std.dbCod}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ind-02-std', ind02Std.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ind-02-std/'+ ind02Std.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ind-02-std/'+ ind02Std.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

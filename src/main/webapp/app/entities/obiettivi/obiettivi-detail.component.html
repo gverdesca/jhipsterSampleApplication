@@ -1,0 +1,40 @@
+
+<div *ngIf="obiettivi">
+    <h2><span>Obiettivi</span> {{obiettivi.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Cd Obi</span></dt>
+        <dd>
+            <span>{{obiettivi.cdObi}}</span>
+        </dd>
+        <dt><span>Dl Obi</span></dt>
+        <dd>
+            <span>{{obiettivi.dlObi}}</span>
+        </dd>
+        <dt><span>Dl Icona</span></dt>
+        <dd>
+            <span>{{obiettivi.dlIcona}}</span>
+        </dd>
+        <dt><span>Ba 01 Utente</span></dt>
+        <dd>
+            <div *ngIf="obiettivi.ba01utente">
+                <a [routerLink]="['/ba-01-utente', obiettivi.ba01utente?.id]">{{obiettivi.ba01utente?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'obiettivi/'+ obiettivi.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

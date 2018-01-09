@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ba12Widget.
+    -->
+    <changeSet id="20180109135415-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ba11dsh_id"
+                                 baseTableName="ba_12_widget"
+                                 constraintName="fk_ba12widget_ba11dsh_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ba_11_dsh"/>
+
+        <addForeignKeyConstraint baseColumnNames="dashboard_id"
+                                 baseTableName="ba_12_widget"
+                                 constraintName="fk_ba12widget_dashboard_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ba_11_dsh"/>
+
+        <addForeignKeyConstraint baseColumnNames="query_id"
+                                 baseTableName="ba_12_widget"
+                                 constraintName="fk_ba12widget_query_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ind_12_query"/>
+
+        <addForeignKeyConstraint baseColumnNames="widget_type_id"
+                                 baseTableName="ba_12_widget"
+                                 constraintName="fk_ba12widget_widget_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipi_widget"/>
+
+        <addForeignKeyConstraint baseColumnNames="ind12query_id"
+                                 baseTableName="ba_12_widget"
+                                 constraintName="fk_ba12widget_ind12query_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ind_12_query"/>
+
+    </changeSet>
+</databaseChangeLog>

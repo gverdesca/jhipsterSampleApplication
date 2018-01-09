@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ObiettiviInd.
+    -->
+    <changeSet id="20180109135425-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ind01indic_id"
+                                 baseTableName="obiettivi_ind"
+                                 constraintName="fk_obiettivi_ind_ind01indic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ind_01_indic"/>
+
+        <addForeignKeyConstraint baseColumnNames="ind12query_id"
+                                 baseTableName="obiettivi_ind"
+                                 constraintName="fk_obiettivi_ind_ind12query_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ind_12_query"/>
+
+        <addForeignKeyConstraint baseColumnNames="obi00obiettivo_id"
+                                 baseTableName="obiettivi_ind"
+                                 constraintName="obiettivi_ind_obi_00_obiettiv_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="obiettivi"/>
+
+    </changeSet>
+</databaseChangeLog>
