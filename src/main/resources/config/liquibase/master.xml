@@ -5,6 +5,29 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114353_added_entity_Ba11Dsh.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114354_added_entity_Datasource.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114355_added_entity_Ba10Menu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114356_added_entity_MondrianDs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114357_added_entity_Ba01Utente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114358_added_entity_Ba00Entita.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114359_added_entity_Ba12Widget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114400_added_entity_TipiWidget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114401_added_entity_WidgetImpl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114402_added_entity_Ind12Query.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114403_added_entity_Ind01Indic.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114404_added_entity_Ind04Classif.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114405_added_entity_Ind02Std.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114406_added_entity_Obi02IndicValu.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180109114353_added_entity_constraints_Ba11Dsh.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114354_added_entity_constraints_Datasource.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114355_added_entity_constraints_Ba10Menu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114356_added_entity_constraints_MondrianDs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114357_added_entity_constraints_Ba01Utente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114359_added_entity_constraints_Ba12Widget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114400_added_entity_constraints_TipiWidget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114402_added_entity_constraints_Ind12Query.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180109114403_added_entity_constraints_Ind01Indic.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

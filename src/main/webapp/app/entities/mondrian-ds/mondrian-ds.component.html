@@ -1,0 +1,84 @@
+<div>
+    <h2>
+        <span>Mondrian Ds</span>
+        <button class="btn btn-primary float-right jh-create-entity create-mondrian-ds" [routerLink]="['/', { outlets: { popup: ['mondrian-ds-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Mondrian Ds
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="mondrianDs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nm Cubo</span></th>
+            <th><span>Dl Nome Saiku</span></th>
+            <th><span>Dl Path Schema</span></th>
+            <th><span>De Mondrian Conn</span></th>
+            <th><span>Dl Jdbc Url</span></th>
+            <th><span>Dl Driver</span></th>
+            <th><span>Dl Username</span></th>
+            <th><span>Dl Password</span></th>
+            <th><span>Datasource</span></th>
+            <th><span>Indicator</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let mondrianDs of mondrianDs ;trackBy: trackId">
+                <td><a [routerLink]="['../mondrian-ds', mondrianDs.id ]">{{mondrianDs.id}}</a></td>
+                <td>{{mondrianDs.nmCubo}}</td>
+                <td>{{mondrianDs.dlNomeSaiku}}</td>
+                <td>{{mondrianDs.dlPathSchema}}</td>
+                <td>{{mondrianDs.deMondrianConn}}</td>
+                <td>{{mondrianDs.dlJdbcUrl}}</td>
+                <td>{{mondrianDs.dlDriver}}</td>
+                <td>{{mondrianDs.dlUsername}}</td>
+                <td>{{mondrianDs.dlPassword}}</td>
+                <td>
+                    <div *ngIf="mondrianDs.datasource">
+                        <a [routerLink]="['../datasource', mondrianDs.datasource?.id ]" >{{mondrianDs.datasource?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="mondrianDs.indicator">
+                        <a [routerLink]="['../ind-01-indic', mondrianDs.indicator?.id ]" >{{mondrianDs.indicator?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../mondrian-ds', mondrianDs.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'mondrian-ds/'+ mondrianDs.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'mondrian-ds/'+ mondrianDs.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

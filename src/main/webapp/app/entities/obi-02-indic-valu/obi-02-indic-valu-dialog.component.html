@@ -1,0 +1,70 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myObi02IndicValuLabel">Create or edit a Obi 02 Indic Valu</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!obi02IndicValu.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="obi02IndicValu.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tivalu">Tivalu</label>
+            <input type="number" class="form-control" name="tivalu" id="field_tivalu"
+                [(ngModel)]="obi02IndicValu.tivalu" required/>
+            <div [hidden]="!(editForm.controls.tivalu?.dirty && editForm.controls.tivalu?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tivalu?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tivalu?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ndvalinf">Ndvalinf</label>
+            <input type="number" class="form-control" name="ndvalinf" id="field_ndvalinf"
+                [(ngModel)]="obi02IndicValu.ndvalinf" required/>
+            <div [hidden]="!(editForm.controls.ndvalinf?.dirty && editForm.controls.ndvalinf?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ndvalinf?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.ndvalinf?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ndvalsup">Ndvalsup</label>
+            <input type="number" class="form-control" name="ndvalsup" id="field_ndvalsup"
+                [(ngModel)]="obi02IndicValu.ndvalsup" required/>
+            <div [hidden]="!(editForm.controls.ndvalsup?.dirty && editForm.controls.ndvalsup?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ndvalsup?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.ndvalsup?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

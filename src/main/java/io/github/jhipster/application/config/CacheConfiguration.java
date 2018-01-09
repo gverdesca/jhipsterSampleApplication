@@ -42,6 +42,24 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba11Dsh.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba11Dsh.class.getName() + ".widgets", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Datasource.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Datasource.class.getName() + ".queries", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba10Menu.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba10Menu.class.getName() + ".childs", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.MondrianDs.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba01Utente.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba00Entita.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ba12Widget.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.TipiWidget.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.WidgetImpl.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ind12Query.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ind12Query.class.getName() + ".widgets", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ind01Indic.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ind04Classif.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Ind02Std.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Obi02IndicValu.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
