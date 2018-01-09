@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span>Ba 12 Widgets</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ba-12-widget" [routerLink]="['/', { outlets: { popup: ['ba-12-widget-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Ba 12 Widget
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ba12Widgets">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>De Options</span></th>
+            <th><span>Db Titolo</span></th>
+            <th><span>De Content</span></th>
+            <th><span>Ba 11 Dsh</span></th>
+            <th><span>Dashboard</span></th>
+            <th><span>Query</span></th>
+            <th><span>Widget Type</span></th>
+            <th><span>Ind 12 Query</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ba12Widget of ba12Widgets ;trackBy: trackId">
+                <td><a [routerLink]="['../ba-12-widget', ba12Widget.id ]">{{ba12Widget.id}}</a></td>
+                <td>{{ba12Widget.deOptions}}</td>
+                <td>{{ba12Widget.dbTitolo}}</td>
+                <td>{{ba12Widget.deContent}}</td>
+                <td>
+                    <div *ngIf="ba12Widget.ba11Dsh">
+                        <a [routerLink]="['../ba-11-dsh', ba12Widget.ba11Dsh?.id ]" >{{ba12Widget.ba11Dsh?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ba12Widget.dashboard">
+                        <a [routerLink]="['../ba-11-dsh', ba12Widget.dashboard?.id ]" >{{ba12Widget.dashboard?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ba12Widget.query">
+                        <a [routerLink]="['../ind-12-query', ba12Widget.query?.id ]" >{{ba12Widget.query?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ba12Widget.widgetType">
+                        <a [routerLink]="['../tipi-widget', ba12Widget.widgetType?.id ]" >{{ba12Widget.widgetType?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ba12Widget.ind12Query">
+                        <a [routerLink]="['../ind-12-query', ba12Widget.ind12Query?.id ]" >{{ba12Widget.ind12Query?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ba-12-widget', ba12Widget.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ba-12-widget/'+ ba12Widget.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ba-12-widget/'+ ba12Widget.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

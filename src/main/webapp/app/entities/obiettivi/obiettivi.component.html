@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Obiettivis</span>
+        <button class="btn btn-primary float-right jh-create-entity create-obiettivi" [routerLink]="['/', { outlets: { popup: ['obiettivi-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Obiettivi
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="obiettivis">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Cd Obi</span></th>
+            <th><span>Dl Obi</span></th>
+            <th><span>Dl Icona</span></th>
+            <th><span>Ba 01 Utente</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let obiettivi of obiettivis ;trackBy: trackId">
+                <td><a [routerLink]="['../obiettivi', obiettivi.id ]">{{obiettivi.id}}</a></td>
+                <td>{{obiettivi.cdObi}}</td>
+                <td>{{obiettivi.dlObi}}</td>
+                <td>{{obiettivi.dlIcona}}</td>
+                <td>
+                    <div *ngIf="obiettivi.ba01utente">
+                        <a [routerLink]="['../ba-01-utente', obiettivi.ba01utente?.id ]" >{{obiettivi.ba01utente?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../obiettivi', obiettivi.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'obiettivi/'+ obiettivi.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'obiettivi/'+ obiettivi.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
