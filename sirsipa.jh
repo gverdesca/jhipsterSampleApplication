@@ -1,0 +1,192 @@
+
+entity Ba11Dsh {
+	id String required maxlength(36),
+	dbTitolo String maxlength(100),
+	deDesc String maxlength(400),
+	deContent String maxlength(1024),
+}
+
+entity Datasource {
+	id String required maxlength(36),
+	dbTipo String maxlength(100),
+	cdCod String required maxlength(400),
+	tsCreaz LocalDate,
+	tsModif LocalDate,
+	dlPathImg String maxlength(400)
+}
+
+entity Ba10Menu {
+	id String required maxlength(36),
+	nmNome String maxlength(100),
+	cdCod String required maxlength(100),
+	dbOrdine String maxlength(100),
+	dlPath String maxlength(400),
+	dlIcon String maxlength(400),
+	blLink Boolean	
+}
+
+entity MondrianDs {
+	id String required maxlength(36),
+	nmCubo String maxlength(100),
+	dlNomeSaiku String maxlength(400),
+	dlPathSchema String maxlength(400),
+	deMondrianConn String maxlength(1024),
+	dlJdbcUrl String maxlength(400),
+	dlDriver String maxlength(400),
+	dlUsername String maxlength(400),
+	dlPassword String maxlength(400)
+}
+
+entity Ba01Utente {
+	id String required maxlength(36),
+	nmNome String maxlength(100),
+	cdCod String maxlength(100)
+}
+
+entity Ba00Entita {
+	id String required maxlength(36),
+	nmNome String maxlength(100),
+	cdCod String required maxlength(100)
+}
+
+entity Ba12Widget {
+	id String required maxlength(36),
+	deOptions String maxlength(1024),
+	dbTitolo String maxlength(100),
+	deContent String maxlength(1024)
+}
+
+entity TipiWidget {
+	id String required maxlength(36),
+	dbTipo String maxlength(100),
+	dbTipoCont String maxlength(100),
+	flDrill Boolean
+}
+
+entity WidgetImpl {
+	id String required maxlength(36),
+	dbTipo String maxlength(100)
+}
+
+entity Ind12Query {
+	id String required maxlength(36),
+	dbTipo String maxlength(100),
+	cdCod String required maxlength(100),
+	nmNome String maxlength(100),
+	deQuery String maxlength(1024),
+	dlPath String maxlength(400),
+	deDesc String maxlength(400)
+}
+
+entity Ind01Indic {
+	id String required maxlength(36),
+    dlDes String maxlength(400),
+    ltNote String required maxlength(500),
+    dlPathOwl String required maxlength(400),
+    dlIri String required maxlength(400),
+    dbCod String required maxlength(100)
+}
+
+entity Ind04Classif {
+	id String required maxlength(36),
+	dlDes String required maxlength(400),
+	dbCod String required maxlength(100)
+}
+
+entity Ind02Std {
+	id String required maxlength(36),
+    dlDes String required maxlength(400),
+    dlUrl String required maxlength(400),
+    dbCod String required maxlength(100)
+}
+
+relationship ManyToOne {
+Ba11Dsh{user} to Ba01Utente
+}
+
+relationship ManyToOne {
+Ba11Dsh{menu} to Ba10Menu
+}
+
+relationship OneToMany {
+Ba11Dsh{widgets} to Ba12Widget
+}
+
+relationship ManyToOne {
+Datasource{user} to Ba01Utente
+}
+
+relationship ManyToOne {
+Datasource{userUpdate} to Ba01Utente
+}
+
+relationship OneToMany {
+Datasource{queries} to Ind12Query
+}
+
+relationship ManyToOne {
+Ba10Menu{menuParent} to Ba10Menu
+}
+
+relationship OneToMany {
+Ba10Menu{childs} to Ba10Menu
+}
+
+
+relationship OneToOne {
+MondrianDs{datasource} to Datasource
+}
+
+relationship ManyToOne {
+MondrianDs{indicator} to Ind01Indic
+}
+
+relationship ManyToOne {
+Ba01Utente{userEntity} to Ba00Entita
+}
+
+relationship ManyToOne {
+Ba12Widget{dashboard} to Ba11Dsh
+}
+
+relationship ManyToOne {
+Ba12Widget{query} to Ind12Query
+}
+
+relationship ManyToOne {
+Ba12Widget{widgetType} to TipiWidget
+}
+
+relationship OneToOne {
+TipiWidget{widgetImpl} to WidgetImpl
+}
+
+relationship ManyToOne {
+Ind12Query{datasource} to Datasource
+}
+
+relationship OneToMany {
+Ind12Query{widget} to Ba12Widget
+}
+
+relationship ManyToOne {
+Ind01Indic{ind02Std} to Ind02Std
+}
+
+relationship ManyToOne {
+Ind01Indic{ind04classif} to Ind04Classif
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

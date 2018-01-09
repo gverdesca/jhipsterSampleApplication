@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span>Ind 01 Indics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ind-01-indic" [routerLink]="['/', { outlets: { popup: ['ind-01-indic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Ind 01 Indic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ind01Indics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Dl Des</span></th>
+            <th><span>Lt Note</span></th>
+            <th><span>Dl Path Owl</span></th>
+            <th><span>Dl Iri</span></th>
+            <th><span>Db Cod</span></th>
+            <th><span>Ind 02 Std</span></th>
+            <th><span>Ind 04 Classif</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ind01Indic of ind01Indics ;trackBy: trackId">
+                <td><a [routerLink]="['../ind-01-indic', ind01Indic.id ]">{{ind01Indic.id}}</a></td>
+                <td>{{ind01Indic.dlDes}}</td>
+                <td>{{ind01Indic.ltNote}}</td>
+                <td>{{ind01Indic.dlPathOwl}}</td>
+                <td>{{ind01Indic.dlIri}}</td>
+                <td>{{ind01Indic.dbCod}}</td>
+                <td>
+                    <div *ngIf="ind01Indic.ind02Std">
+                        <a [routerLink]="['../ind-02-std', ind01Indic.ind02Std?.id ]" >{{ind01Indic.ind02Std?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ind01Indic.ind04classif">
+                        <a [routerLink]="['../ind-04-classif', ind01Indic.ind04classif?.id ]" >{{ind01Indic.ind04classif?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ind-01-indic', ind01Indic.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ind-01-indic/'+ ind01Indic.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ind-01-indic/'+ ind01Indic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span>Ind 12 Queries</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ind-12-query" [routerLink]="['/', { outlets: { popup: ['ind-12-query-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Ind 12 Query
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ind12Queries">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Db Tipo</span></th>
+            <th><span>Cd Cod</span></th>
+            <th><span>Nm Nome</span></th>
+            <th><span>De Query</span></th>
+            <th><span>Dl Path</span></th>
+            <th><span>De Desc</span></th>
+            <th><span>Datasource</span></th>
+            <th><span>Datasource</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ind12Query of ind12Queries ;trackBy: trackId">
+                <td><a [routerLink]="['../ind-12-query', ind12Query.id ]">{{ind12Query.id}}</a></td>
+                <td>{{ind12Query.dbTipo}}</td>
+                <td>{{ind12Query.cdCod}}</td>
+                <td>{{ind12Query.nmNome}}</td>
+                <td>{{ind12Query.deQuery}}</td>
+                <td>{{ind12Query.dlPath}}</td>
+                <td>{{ind12Query.deDesc}}</td>
+                <td>
+                    <div *ngIf="ind12Query.datasource">
+                        <a [routerLink]="['../datasource', ind12Query.datasource?.id ]" >{{ind12Query.datasource?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ind12Query.datasource">
+                        <a [routerLink]="['../datasource', ind12Query.datasource?.id ]" >{{ind12Query.datasource?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ind-12-query', ind12Query.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ind-12-query/'+ ind12Query.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ind-12-query/'+ ind12Query.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

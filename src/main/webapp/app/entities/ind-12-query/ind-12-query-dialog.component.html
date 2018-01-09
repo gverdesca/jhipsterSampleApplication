@@ -1,0 +1,109 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myInd12QueryLabel">Create or edit a Ind 12 Query</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ind12Query.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ind12Query.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dbTipo">Db Tipo</label>
+            <input type="text" class="form-control" name="dbTipo" id="field_dbTipo"
+                [(ngModel)]="ind12Query.dbTipo" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.dbTipo?.dirty && editForm.controls.dbTipo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dbTipo?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cdCod">Cd Cod</label>
+            <input type="text" class="form-control" name="cdCod" id="field_cdCod"
+                [(ngModel)]="ind12Query.cdCod" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.cdCod?.dirty && editForm.controls.cdCod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cdCod?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cdCod?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nmNome">Nm Nome</label>
+            <input type="text" class="form-control" name="nmNome" id="field_nmNome"
+                [(ngModel)]="ind12Query.nmNome" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.nmNome?.dirty && editForm.controls.nmNome?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmNome?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_deQuery">De Query</label>
+            <input type="text" class="form-control" name="deQuery" id="field_deQuery"
+                [(ngModel)]="ind12Query.deQuery" maxlength="1024"/>
+            <div [hidden]="!(editForm.controls.deQuery?.dirty && editForm.controls.deQuery?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.deQuery?.errors?.maxlength">
+                   This field cannot be longer than 1024 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlPath">Dl Path</label>
+            <input type="text" class="form-control" name="dlPath" id="field_dlPath"
+                [(ngModel)]="ind12Query.dlPath" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlPath?.dirty && editForm.controls.dlPath?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlPath?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_deDesc">De Desc</label>
+            <input type="text" class="form-control" name="deDesc" id="field_deDesc"
+                [(ngModel)]="ind12Query.deDesc" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.deDesc?.dirty && editForm.controls.deDesc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.deDesc?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_datasource">Datasource</label>
+            <select class="form-control" id="field_datasource" name="datasource" [(ngModel)]="ind12Query.datasource" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="datasourceOption.id === ind12Query.datasource?.id ? ind12Query.datasource : datasourceOption" *ngFor="let datasourceOption of datasources; trackBy: trackDatasourceById">{{datasourceOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_datasource">Datasource</label>
+            <select class="form-control" id="field_datasource" name="datasource" [(ngModel)]="ind12Query.datasource" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="datasourceOption.id === ind12Query.datasource?.id ? ind12Query.datasource : datasourceOption" *ngFor="let datasourceOption of datasources; trackBy: trackDatasourceById">{{datasourceOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
