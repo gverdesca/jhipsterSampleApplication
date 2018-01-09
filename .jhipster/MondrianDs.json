@@ -1,0 +1,91 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "datasource",
+            "otherEntityName": "datasource",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "mondrianDs"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "indicator",
+            "otherEntityName": "ind01Indic",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nmCubo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "dlNomeSaiku",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        },
+        {
+            "fieldName": "dlPathSchema",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        },
+        {
+            "fieldName": "deMondrianConn",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "dlJdbcUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        },
+        {
+            "fieldName": "dlDriver",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        },
+        {
+            "fieldName": "dlUsername",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        },
+        {
+            "fieldName": "dlPassword",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        }
+    ],
+    "changelogDate": "20180109114356",
+    "entityTableName": "mondrian_ds",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

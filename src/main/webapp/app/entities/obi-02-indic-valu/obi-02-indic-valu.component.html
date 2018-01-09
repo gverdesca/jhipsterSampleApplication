@@ -1,0 +1,62 @@
+<div>
+    <h2>
+        <span>Obi 02 Indic Valus</span>
+        <button class="btn btn-primary float-right jh-create-entity create-obi-02-indic-valu" [routerLink]="['/', { outlets: { popup: ['obi-02-indic-valu-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Obi 02 Indic Valu
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="obi02IndicValus">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Tivalu</span></th>
+            <th><span>Ndvalinf</span></th>
+            <th><span>Ndvalsup</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let obi02IndicValu of obi02IndicValus ;trackBy: trackId">
+                <td><a [routerLink]="['../obi-02-indic-valu', obi02IndicValu.id ]">{{obi02IndicValu.id}}</a></td>
+                <td>{{obi02IndicValu.tivalu}}</td>
+                <td>{{obi02IndicValu.ndvalinf}}</td>
+                <td>{{obi02IndicValu.ndvalsup}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../obi-02-indic-valu', obi02IndicValu.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'obi-02-indic-valu/'+ obi02IndicValu.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'obi-02-indic-valu/'+ obi02IndicValu.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

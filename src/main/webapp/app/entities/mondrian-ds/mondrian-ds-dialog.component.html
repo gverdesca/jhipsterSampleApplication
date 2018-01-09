@@ -1,0 +1,127 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMondrianDsLabel">Create or edit a Mondrian Ds</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!mondrianDs.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="mondrianDs.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nmCubo">Nm Cubo</label>
+            <input type="text" class="form-control" name="nmCubo" id="field_nmCubo"
+                [(ngModel)]="mondrianDs.nmCubo" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.nmCubo?.dirty && editForm.controls.nmCubo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmCubo?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlNomeSaiku">Dl Nome Saiku</label>
+            <input type="text" class="form-control" name="dlNomeSaiku" id="field_dlNomeSaiku"
+                [(ngModel)]="mondrianDs.dlNomeSaiku" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlNomeSaiku?.dirty && editForm.controls.dlNomeSaiku?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlNomeSaiku?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlPathSchema">Dl Path Schema</label>
+            <input type="text" class="form-control" name="dlPathSchema" id="field_dlPathSchema"
+                [(ngModel)]="mondrianDs.dlPathSchema" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlPathSchema?.dirty && editForm.controls.dlPathSchema?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlPathSchema?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_deMondrianConn">De Mondrian Conn</label>
+            <input type="text" class="form-control" name="deMondrianConn" id="field_deMondrianConn"
+                [(ngModel)]="mondrianDs.deMondrianConn" maxlength="1024"/>
+            <div [hidden]="!(editForm.controls.deMondrianConn?.dirty && editForm.controls.deMondrianConn?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.deMondrianConn?.errors?.maxlength">
+                   This field cannot be longer than 1024 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlJdbcUrl">Dl Jdbc Url</label>
+            <input type="text" class="form-control" name="dlJdbcUrl" id="field_dlJdbcUrl"
+                [(ngModel)]="mondrianDs.dlJdbcUrl" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlJdbcUrl?.dirty && editForm.controls.dlJdbcUrl?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlJdbcUrl?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlDriver">Dl Driver</label>
+            <input type="text" class="form-control" name="dlDriver" id="field_dlDriver"
+                [(ngModel)]="mondrianDs.dlDriver" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlDriver?.dirty && editForm.controls.dlDriver?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlDriver?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlUsername">Dl Username</label>
+            <input type="text" class="form-control" name="dlUsername" id="field_dlUsername"
+                [(ngModel)]="mondrianDs.dlUsername" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlUsername?.dirty && editForm.controls.dlUsername?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlUsername?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlPassword">Dl Password</label>
+            <input type="text" class="form-control" name="dlPassword" id="field_dlPassword"
+                [(ngModel)]="mondrianDs.dlPassword" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlPassword?.dirty && editForm.controls.dlPassword?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlPassword?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_datasource">Datasource</label>
+            <select class="form-control" id="field_datasource" name="datasource" [(ngModel)]="mondrianDs.datasource">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="datasourceOption.id === mondrianDs.datasource?.id ? mondrianDs.datasource : datasourceOption" *ngFor="let datasourceOption of datasources; trackBy: trackDatasourceById">{{datasourceOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_indicator">Indicator</label>
+            <select class="form-control" id="field_indicator" name="indicator" [(ngModel)]="mondrianDs.indicator" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind01IndicOption.id === mondrianDs.indicator?.id ? mondrianDs.indicator : ind01IndicOption" *ngFor="let ind01IndicOption of ind01indics; trackBy: trackInd01IndicById">{{ind01IndicOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
