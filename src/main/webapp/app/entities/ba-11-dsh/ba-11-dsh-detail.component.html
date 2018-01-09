@@ -1,0 +1,46 @@
+
+<div *ngIf="ba11Dsh">
+    <h2><span>Ba 11 Dsh</span> {{ba11Dsh.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Db Titolo</span></dt>
+        <dd>
+            <span>{{ba11Dsh.dbTitolo}}</span>
+        </dd>
+        <dt><span>De Desc</span></dt>
+        <dd>
+            <span>{{ba11Dsh.deDesc}}</span>
+        </dd>
+        <dt><span>De Content</span></dt>
+        <dd>
+            <span>{{ba11Dsh.deContent}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            <div *ngIf="ba11Dsh.user">
+                <a [routerLink]="['/ba-01-utente', ba11Dsh.user?.id]">{{ba11Dsh.user?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Menu</span></dt>
+        <dd>
+            <div *ngIf="ba11Dsh.menu">
+                <a [routerLink]="['/ba-10-menu', ba11Dsh.menu?.id]">{{ba11Dsh.menu?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ba-11-dsh/'+ ba11Dsh.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

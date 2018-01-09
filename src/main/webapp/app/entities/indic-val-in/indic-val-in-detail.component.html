@@ -1,0 +1,36 @@
+
+<div *ngIf="indicValIn">
+    <h2><span>Indic Val In</span> {{indicValIn.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nd Val Inf</span></dt>
+        <dd>
+            <span>{{indicValIn.ndValInf}}</span>
+        </dd>
+        <dt><span>Nd Val Sup</span></dt>
+        <dd>
+            <span>{{indicValIn.ndValSup}}</span>
+        </dd>
+        <dt><span>Obi 01 Obiettivi Indic</span></dt>
+        <dd>
+            <div *ngIf="indicValIn.obi01ObiettiviIndic">
+                <a [routerLink]="['/obiettivi-ind', indicValIn.obi01ObiettiviIndic?.id]">{{indicValIn.obi01ObiettiviIndic?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'indic-val-in/'+ indicValIn.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

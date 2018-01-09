@@ -1,0 +1,58 @@
+
+<div *ngIf="ind12Query">
+    <h2><span>Ind 12 Query</span> {{ind12Query.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Db Tipo</span></dt>
+        <dd>
+            <span>{{ind12Query.dbTipo}}</span>
+        </dd>
+        <dt><span>Cd Cod</span></dt>
+        <dd>
+            <span>{{ind12Query.cdCod}}</span>
+        </dd>
+        <dt><span>Nm Nome</span></dt>
+        <dd>
+            <span>{{ind12Query.nmNome}}</span>
+        </dd>
+        <dt><span>De Query</span></dt>
+        <dd>
+            <span>{{ind12Query.deQuery}}</span>
+        </dd>
+        <dt><span>Dl Path</span></dt>
+        <dd>
+            <span>{{ind12Query.dlPath}}</span>
+        </dd>
+        <dt><span>De Desc</span></dt>
+        <dd>
+            <span>{{ind12Query.deDesc}}</span>
+        </dd>
+        <dt><span>Datasource</span></dt>
+        <dd>
+            <div *ngIf="ind12Query.datasource">
+                <a [routerLink]="['/datasource', ind12Query.datasource?.id]">{{ind12Query.datasource?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Datasource</span></dt>
+        <dd>
+            <div *ngIf="ind12Query.datasource">
+                <a [routerLink]="['/datasource', ind12Query.datasource?.id]">{{ind12Query.datasource?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ind-12-query/'+ ind12Query.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

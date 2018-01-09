@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBa12WidgetLabel">Create or edit a Ba 12 Widget</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ba12Widget.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ba12Widget.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_deOptions">De Options</label>
+            <input type="text" class="form-control" name="deOptions" id="field_deOptions"
+                [(ngModel)]="ba12Widget.deOptions" maxlength="1024"/>
+            <div [hidden]="!(editForm.controls.deOptions?.dirty && editForm.controls.deOptions?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.deOptions?.errors?.maxlength">
+                   This field cannot be longer than 1024 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dbTitolo">Db Titolo</label>
+            <input type="text" class="form-control" name="dbTitolo" id="field_dbTitolo"
+                [(ngModel)]="ba12Widget.dbTitolo" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.dbTitolo?.dirty && editForm.controls.dbTitolo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dbTitolo?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_deContent">De Content</label>
+            <input type="text" class="form-control" name="deContent" id="field_deContent"
+                [(ngModel)]="ba12Widget.deContent" maxlength="1024"/>
+            <div [hidden]="!(editForm.controls.deContent?.dirty && editForm.controls.deContent?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.deContent?.errors?.maxlength">
+                   This field cannot be longer than 1024 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_ba11Dsh">Ba 11 Dsh</label>
+            <select class="form-control" id="field_ba11Dsh" name="ba11Dsh" [(ngModel)]="ba12Widget.ba11Dsh" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ba11DshOption.id === ba12Widget.ba11Dsh?.id ? ba12Widget.ba11Dsh : ba11DshOption" *ngFor="let ba11DshOption of ba11dshes; trackBy: trackBa11DshById">{{ba11DshOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dashboard">Dashboard</label>
+            <select class="form-control" id="field_dashboard" name="dashboard" [(ngModel)]="ba12Widget.dashboard" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ba11DshOption.id === ba12Widget.dashboard?.id ? ba12Widget.dashboard : ba11DshOption" *ngFor="let ba11DshOption of ba11dshes; trackBy: trackBa11DshById">{{ba11DshOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_query">Query</label>
+            <select class="form-control" id="field_query" name="query" [(ngModel)]="ba12Widget.query" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind12QueryOption.id === ba12Widget.query?.id ? ba12Widget.query : ind12QueryOption" *ngFor="let ind12QueryOption of ind12queries; trackBy: trackInd12QueryById">{{ind12QueryOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_widgetType">Widget Type</label>
+            <select class="form-control" id="field_widgetType" name="widgetType" [(ngModel)]="ba12Widget.widgetType" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipiWidgetOption.id === ba12Widget.widgetType?.id ? ba12Widget.widgetType : tipiWidgetOption" *ngFor="let tipiWidgetOption of tipiwidgets; trackBy: trackTipiWidgetById">{{tipiWidgetOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ind12Query">Ind 12 Query</label>
+            <select class="form-control" id="field_ind12Query" name="ind12Query" [(ngModel)]="ba12Widget.ind12Query" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind12QueryOption.id === ba12Widget.ind12Query?.id ? ba12Widget.ind12Query : ind12QueryOption" *ngFor="let ind12QueryOption of ind12queries; trackBy: trackInd12QueryById">{{ind12QueryOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

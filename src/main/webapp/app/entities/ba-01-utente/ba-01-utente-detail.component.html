@@ -1,0 +1,36 @@
+
+<div *ngIf="ba01Utente">
+    <h2><span>Ba 01 Utente</span> {{ba01Utente.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nm Nome</span></dt>
+        <dd>
+            <span>{{ba01Utente.nmNome}}</span>
+        </dd>
+        <dt><span>Cd Cod</span></dt>
+        <dd>
+            <span>{{ba01Utente.cdCod}}</span>
+        </dd>
+        <dt><span>User Entity</span></dt>
+        <dd>
+            <div *ngIf="ba01Utente.userEntity">
+                <a [routerLink]="['/ba-00-entita', ba01Utente.userEntity?.id]">{{ba01Utente.userEntity?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ba-01-utente/'+ ba01Utente.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

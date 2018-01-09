@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity IndicValIn.
+    -->
+    <changeSet id="20180109135320-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="obi01obiettivi_indic_id"
+                                 baseTableName="indic_val_in"
+                                 constraintName="indic_val_in_obi_01_obiettiv_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="obiettivi_ind"/>
+
+    </changeSet>
+</databaseChangeLog>

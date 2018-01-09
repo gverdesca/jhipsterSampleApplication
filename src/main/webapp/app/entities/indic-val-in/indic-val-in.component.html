@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span>Indic Val Ins</span>
+        <button class="btn btn-primary float-right jh-create-entity create-indic-val-in" [routerLink]="['/', { outlets: { popup: ['indic-val-in-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Indic Val In
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="indicValIns">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nd Val Inf</span></th>
+            <th><span>Nd Val Sup</span></th>
+            <th><span>Obi 01 Obiettivi Indic</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let indicValIn of indicValIns ;trackBy: trackId">
+                <td><a [routerLink]="['../indic-val-in', indicValIn.id ]">{{indicValIn.id}}</a></td>
+                <td>{{indicValIn.ndValInf}}</td>
+                <td>{{indicValIn.ndValSup}}</td>
+                <td>
+                    <div *ngIf="indicValIn.obi01ObiettiviIndic">
+                        <a [routerLink]="['../obiettivi-ind', indicValIn.obi01ObiettiviIndic?.id ]" >{{indicValIn.obi01ObiettiviIndic?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../indic-val-in', indicValIn.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'indic-val-in/'+ indicValIn.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'indic-val-in/'+ indicValIn.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
