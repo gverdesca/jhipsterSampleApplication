@@ -1,0 +1,40 @@
+
+<div *ngIf="tipiWidget">
+    <h2><span>Tipi Widget</span> {{tipiWidget.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Db Tipo</span></dt>
+        <dd>
+            <span>{{tipiWidget.dbTipo}}</span>
+        </dd>
+        <dt><span>Db Tipo Cont</span></dt>
+        <dd>
+            <span>{{tipiWidget.dbTipoCont}}</span>
+        </dd>
+        <dt><span>Fl Drill</span></dt>
+        <dd>
+            <span>{{tipiWidget.flDrill}}</span>
+        </dd>
+        <dt><span>Widget Impl</span></dt>
+        <dd>
+            <div *ngIf="tipiWidget.widgetImpl">
+                <a [routerLink]="['/widget-impl', tipiWidget.widgetImpl?.id]">{{tipiWidget.widgetImpl?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipi-widget/'+ tipiWidget.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

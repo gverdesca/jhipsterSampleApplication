@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>Ba 11 Dshes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ba-11-dsh" [routerLink]="['/', { outlets: { popup: ['ba-11-dsh-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Ba 11 Dsh
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ba11Dshes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Db Titolo</span></th>
+            <th><span>De Desc</span></th>
+            <th><span>De Content</span></th>
+            <th><span>User</span></th>
+            <th><span>Menu</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ba11Dsh of ba11Dshes ;trackBy: trackId">
+                <td><a [routerLink]="['../ba-11-dsh', ba11Dsh.id ]">{{ba11Dsh.id}}</a></td>
+                <td>{{ba11Dsh.dbTitolo}}</td>
+                <td>{{ba11Dsh.deDesc}}</td>
+                <td>{{ba11Dsh.deContent}}</td>
+                <td>
+                    <div *ngIf="ba11Dsh.user">
+                        <a [routerLink]="['../ba-01-utente', ba11Dsh.user?.id ]" >{{ba11Dsh.user?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ba11Dsh.menu">
+                        <a [routerLink]="['../ba-10-menu', ba11Dsh.menu?.id ]" >{{ba11Dsh.menu?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ba-11-dsh', ba11Dsh.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ba-11-dsh/'+ ba11Dsh.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ba-11-dsh/'+ ba11Dsh.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ind01Indic.
+    -->
+    <changeSet id="20180109113130-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ind02std_id"
+                                 baseTableName="ind_01_indic"
+                                 constraintName="fk_ind01indic_ind02std_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ind_02_std"/>
+
+        <addForeignKeyConstraint baseColumnNames="ind04classif_id"
+                                 baseTableName="ind_01_indic"
+                                 constraintName="fk_ind01indic_ind04classif_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ind_04_classif"/>
+
+    </changeSet>
+</databaseChangeLog>
