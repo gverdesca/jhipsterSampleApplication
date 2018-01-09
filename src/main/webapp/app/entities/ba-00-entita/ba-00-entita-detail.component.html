@@ -1,0 +1,30 @@
+
+<div *ngIf="ba00Entita">
+    <h2><span>Ba 00 Entita</span> {{ba00Entita.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nm Nome</span></dt>
+        <dd>
+            <span>{{ba00Entita.nmNome}}</span>
+        </dd>
+        <dt><span>Cd Cod</span></dt>
+        <dd>
+            <span>{{ba00Entita.cdCod}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ba-00-entita/'+ ba00Entita.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
