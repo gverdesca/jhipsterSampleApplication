@@ -1,0 +1,62 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myIndicValIntLabel">Create or edit a Indic Val Int</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!indicValInt.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="indicValInt.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ndValInf">Nd Val Inf</label>
+            <input type="number" class="form-control" name="ndValInf" id="field_ndValInf"
+                [(ngModel)]="indicValInt.ndValInf" required/>
+            <div [hidden]="!(editForm.controls.ndValInf?.dirty && editForm.controls.ndValInf?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ndValInf?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.ndValInf?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ndValSup">Nd Val Sup</label>
+            <input type="number" class="form-control" name="ndValSup" id="field_ndValSup"
+                [(ngModel)]="indicValInt.ndValSup" required/>
+            <div [hidden]="!(editForm.controls.ndValSup?.dirty && editForm.controls.ndValSup?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ndValSup?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.ndValSup?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_obi01ObiettiviIndic">Obi 01 Obiettivi Indic</label>
+            <select class="form-control" id="field_obi01ObiettiviIndic" name="obi01ObiettiviIndic" [(ngModel)]="indicValInt.obi01ObiettiviIndic" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="obiettiviIndOption.id === indicValInt.obi01ObiettiviIndic?.id ? indicValInt.obi01ObiettiviIndic : obiettiviIndOption" *ngFor="let obiettiviIndOption of obiettiviinds; trackBy: trackObiettiviIndById">{{obiettiviIndOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

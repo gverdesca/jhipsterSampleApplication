@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span>Datasources</span>
+        <button class="btn btn-primary float-right jh-create-entity create-datasource" [routerLink]="['/', { outlets: { popup: ['datasource-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Datasource
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="datasources">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Db Tipo</span></th>
+            <th><span>Cd Cod</span></th>
+            <th><span>Ts Creaz</span></th>
+            <th><span>Ts Modif</span></th>
+            <th><span>Dl Path Img</span></th>
+            <th><span>User</span></th>
+            <th><span>User Update</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let datasource of datasources ;trackBy: trackId">
+                <td><a [routerLink]="['../datasource', datasource.id ]">{{datasource.id}}</a></td>
+                <td>{{datasource.dbTipo}}</td>
+                <td>{{datasource.cdCod}}</td>
+                <td>{{datasource.tsCreaz | date:'mediumDate'}}</td>
+                <td>{{datasource.tsModif | date:'mediumDate'}}</td>
+                <td>{{datasource.dlPathImg}}</td>
+                <td>
+                    <div *ngIf="datasource.user">
+                        <a [routerLink]="['../ba-01-utente', datasource.user?.id ]" >{{datasource.user?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="datasource.userUpdate">
+                        <a [routerLink]="['../ba-01-utente', datasource.userUpdate?.id ]" >{{datasource.userUpdate?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../datasource', datasource.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'datasource/'+ datasource.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'datasource/'+ datasource.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

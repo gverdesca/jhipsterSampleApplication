@@ -1,0 +1,66 @@
+
+<div *ngIf="mondrianDs">
+    <h2><span>Mondrian Ds</span> {{mondrianDs.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nm Cubo</span></dt>
+        <dd>
+            <span>{{mondrianDs.nmCubo}}</span>
+        </dd>
+        <dt><span>Dl Nome Saiku</span></dt>
+        <dd>
+            <span>{{mondrianDs.dlNomeSaiku}}</span>
+        </dd>
+        <dt><span>Dl Path Schema</span></dt>
+        <dd>
+            <span>{{mondrianDs.dlPathSchema}}</span>
+        </dd>
+        <dt><span>De Mondrian Conn</span></dt>
+        <dd>
+            <span>{{mondrianDs.deMondrianConn}}</span>
+        </dd>
+        <dt><span>Dl Jdbc Url</span></dt>
+        <dd>
+            <span>{{mondrianDs.dlJdbcUrl}}</span>
+        </dd>
+        <dt><span>Dl Driver</span></dt>
+        <dd>
+            <span>{{mondrianDs.dlDriver}}</span>
+        </dd>
+        <dt><span>Dl Username</span></dt>
+        <dd>
+            <span>{{mondrianDs.dlUsername}}</span>
+        </dd>
+        <dt><span>Dl Password</span></dt>
+        <dd>
+            <span>{{mondrianDs.dlPassword}}</span>
+        </dd>
+        <dt><span>Datasource</span></dt>
+        <dd>
+            <div *ngIf="mondrianDs.datasource">
+                <a [routerLink]="['/datasource', mondrianDs.datasource?.id]">{{mondrianDs.datasource?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Indicator</span></dt>
+        <dd>
+            <div *ngIf="mondrianDs.indicator">
+                <a [routerLink]="['/ind-01-indic', mondrianDs.indicator?.id]">{{mondrianDs.indicator?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'mondrian-ds/'+ mondrianDs.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

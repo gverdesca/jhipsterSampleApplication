@@ -1,0 +1,52 @@
+
+<div *ngIf="obiettiviInd">
+    <h2><span>Obiettivi Ind</span> {{obiettiviInd.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Dt Ini</span></dt>
+        <dd>
+            <span>{{obiettiviInd.dtIni | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Dt Fine</span></dt>
+        <dd>
+            <span>{{obiettiviInd.dtFine | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Ti Segno</span></dt>
+        <dd>
+            <span>{{obiettiviInd.tiSegno}}</span>
+        </dd>
+        <dt><span>Ind 01 Indic</span></dt>
+        <dd>
+            <div *ngIf="obiettiviInd.ind01Indic">
+                <a [routerLink]="['/ind-01-indic', obiettiviInd.ind01Indic?.id]">{{obiettiviInd.ind01Indic?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Ind 12 Query</span></dt>
+        <dd>
+            <div *ngIf="obiettiviInd.ind12Query">
+                <a [routerLink]="['/ind-12-query', obiettiviInd.ind12Query?.id]">{{obiettiviInd.ind12Query?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Obi 00 Obiettivo</span></dt>
+        <dd>
+            <div *ngIf="obiettiviInd.obi00obiettivo">
+                <a [routerLink]="['/obiettivi', obiettiviInd.obi00obiettivo?.id]">{{obiettiviInd.obi00obiettivo?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'obiettivi-ind/'+ obiettiviInd.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

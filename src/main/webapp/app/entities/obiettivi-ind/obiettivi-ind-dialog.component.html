@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myObiettiviIndLabel">Create or edit a Obiettivi Ind</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!obiettiviInd.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="obiettiviInd.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dtIni">Dt Ini</label>
+            <div class="input-group">
+                <input id="field_dtIni" type="text" class="form-control" name="dtIni" ngbDatepicker  #dtIniDp="ngbDatepicker" [(ngModel)]="obiettiviInd.dtIni"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dtIniDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dtIni?.dirty && editForm.controls.dtIni?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dtIni?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dtFine">Dt Fine</label>
+            <div class="input-group">
+                <input id="field_dtFine" type="text" class="form-control" name="dtFine" ngbDatepicker  #dtFineDp="ngbDatepicker" [(ngModel)]="obiettiviInd.dtFine"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dtFineDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dtFine?.dirty && editForm.controls.dtFine?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dtFine?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tiSegno">Ti Segno</label>
+            <input type="text" class="form-control" name="tiSegno" id="field_tiSegno"
+                [(ngModel)]="obiettiviInd.tiSegno" required maxlength="1"/>
+            <div [hidden]="!(editForm.controls.tiSegno?.dirty && editForm.controls.tiSegno?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tiSegno?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tiSegno?.errors?.maxlength">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_ind01Indic">Ind 01 Indic</label>
+            <select class="form-control" id="field_ind01Indic" name="ind01Indic" [(ngModel)]="obiettiviInd.ind01Indic" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind01IndicOption.id === obiettiviInd.ind01Indic?.id ? obiettiviInd.ind01Indic : ind01IndicOption" *ngFor="let ind01IndicOption of ind01indics; trackBy: trackInd01IndicById">{{ind01IndicOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ind12Query">Ind 12 Query</label>
+            <select class="form-control" id="field_ind12Query" name="ind12Query" [(ngModel)]="obiettiviInd.ind12Query" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ind12QueryOption.id === obiettiviInd.ind12Query?.id ? obiettiviInd.ind12Query : ind12QueryOption" *ngFor="let ind12QueryOption of ind12queries; trackBy: trackInd12QueryById">{{ind12QueryOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_obi00obiettivo">Obi 00 Obiettivo</label>
+            <select class="form-control" id="field_obi00obiettivo" name="obi00obiettivo" [(ngModel)]="obiettiviInd.obi00obiettivo" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="obiettiviOption.id === obiettiviInd.obi00obiettivo?.id ? obiettiviInd.obi00obiettivo : obiettiviOption" *ngFor="let obiettiviOption of obiettivis; trackBy: trackObiettiviById">{{obiettiviOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

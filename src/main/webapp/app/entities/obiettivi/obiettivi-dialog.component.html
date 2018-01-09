@@ -1,0 +1,65 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myObiettiviLabel">Create or edit a Obiettivi</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!obiettivi.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="obiettivi.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cdObi">Cd Obi</label>
+            <input type="text" class="form-control" name="cdObi" id="field_cdObi"
+                [(ngModel)]="obiettivi.cdObi" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.cdObi?.dirty && editForm.controls.cdObi?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cdObi?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlObi">Dl Obi</label>
+            <input type="text" class="form-control" name="dlObi" id="field_dlObi"
+                [(ngModel)]="obiettivi.dlObi" maxlength="400"/>
+            <div [hidden]="!(editForm.controls.dlObi?.dirty && editForm.controls.dlObi?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlObi?.errors?.maxlength">
+                   This field cannot be longer than 400 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dlIcona">Dl Icona</label>
+            <input type="text" class="form-control" name="dlIcona" id="field_dlIcona"
+                [(ngModel)]="obiettivi.dlIcona" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.dlIcona?.dirty && editForm.controls.dlIcona?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dlIcona?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_ba01utente">Ba 01 Utente</label>
+            <select class="form-control" id="field_ba01utente" name="ba01utente" [(ngModel)]="obiettivi.ba01utente" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ba01UtenteOption.id === obiettivi.ba01utente?.id ? obiettivi.ba01utente : ba01UtenteOption" *ngFor="let ba01UtenteOption of ba01utentes; trackBy: trackBa01UtenteById">{{ba01UtenteOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
