@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBa01UtenteLabel">Create or edit a Ba 01 Utente</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ba01Utente.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ba01Utente.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nmnome">Nmnome</label>
+            <input type="text" class="form-control" name="nmnome" id="field_nmnome"
+                [(ngModel)]="ba01Utente.nmnome" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.nmnome?.dirty && editForm.controls.nmnome?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nmnome?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cdcod">Cdcod</label>
+            <input type="text" class="form-control" name="cdcod" id="field_cdcod"
+                [(ngModel)]="ba01Utente.cdcod" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.cdcod?.dirty && editForm.controls.cdcod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cdcod?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

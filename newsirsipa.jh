@@ -1,0 +1,14 @@
+entity Ba00Entita {
+	id String required maxlength(36),
+	nmNome String maxlength(100),
+	cdCod String required maxlength(100)
+}
+
+entity Ba01Utente {
+	id String required maxlength(36),
+	nm_nome String maxlength(100),
+	cd_cod String maxlength(100)
+}
+
+
+
